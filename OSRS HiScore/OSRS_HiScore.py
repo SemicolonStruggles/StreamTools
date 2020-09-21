@@ -4,6 +4,18 @@ import lxml.html
 import os
 from PIL import Image, ImageFont, ImageDraw
 import math
+import json
+
+# TODO: Move to helper file
+def getFileContents(path):
+    file = open(path, "r")
+    contents = file.read()
+    file.close()
+    return contents
+
+
+configPath = Path("./config.json").absolute()
+config = json.loads(getFileContents(configPath))
 
 
 LevelScores = []
@@ -11,6 +23,8 @@ BossScores = []
 # Order of this dictionary must match with API response
 xGridOffset = 685
 yGridOffset = 836
+
+# TODO: move positions to config
 Positions = {
     "Overall": [800, 781],
     "Attack": [685 + (63 * 1), 836],
@@ -94,6 +108,8 @@ Positions = {
     "Combat": [738, 781]
 }
 
+accounts = config.get("accounts")
+accountTypeParameters = config.get("accountTypeParameters")
 
 class Position:
     def __init__(self, x, y):
@@ -131,6 +147,7 @@ def processHiscoreItem(itemData, itemCount):
         print(itemData[i])
         if itemData[i] == "-1":
             itemData[i] = '-'
+    # TODO: skip list creation and take directly from dict
     itemName = list(Positions.keys())[itemCount]
 
     if len(itemData) == 2:
@@ -207,9 +224,10 @@ font = ImageFont.truetype("{}\\Reckoner.ttf".format(
 # get the line size
 text_width, text_height = font.getsize(unicode_text)
 
+# TODO: remove this
 
-Accounts = ['Mystic Blade', 'Xeric Blade', 'Epic Blade', 'Magic Blade', 'Garlic Blade', 'Cyclic Blade', 'Irenic Blade', 'Lyric Blade', 'Agonic Blade', 'Arabic Blade', 'Auric Blade', 'Azoic Blade', 'Azotic Blade', 'Bardic Blade', 'Baric Blade', 'Boric Blade', 'Bromic Blade', 'Cadmic Blade', 'Calcic Blade', 'Ceric Blade', 'Citric Blade', 'Cleric Blade', 'Cultic Blade', 'Cupric Blade', 'Cyanic Blade', 'Dyadic Blade', 'Emic Blade', 'Erotic Blade', 'Ethnic Blade', 'Etic Blade', 'Felsic Blade', 'Gnomic Blade', 'Holmic Blade', 'Humic Blade', 'Iodic Blade', 'Ionic Blade', 'Iridic Blade', 'Laic Blade', 'Lithic Blade', 'Logic Blade', 'Mafic Blade', 'Mantic Blade', 'Melic Blade', 'Mimic Blade', 'Music Blade', 'Niobic Blade', 'Nitric Blade', 'Odic Blade', 'Ontic Blade', 'Orphic Blade',
-            'Osmic Blade', 'Oxalic Blade', 'Oxidic Blade', 'Ozonic Blade', 'Panic Blade', 'Photic Blade', 'Poetic Blade', 'Rhodic Blade', 'Sodic Blade', 'Steric Blade', 'Telic Blade', 'Terbic Blade', 'Thic Blade', 'Thoric Blade', 'Toluic Blade', 'Typic Blade', 'Uranic Blade', 'Vitric Blade', 'Yttric Blade', 'Zincic Blade', 'Mastic Blade', 'Pyric Blade', 'Pelvic Blade', 'Daric Blade', 'Sepic Blade', 'Limbic Blade', 'Picnic Blade', 'Mesic Blade', 'Civic Blade', 'Ethic Blade', 'Medic Blade', 'Ovonic Blade', 'Azonic Blade', 'Chemic Blade', 'Echoic Blade', 'Fustic Blade', 'Toric Blade', 'Conic Blade', 'Hemic Blade', 'Salic Blade', 'Biotic Blade', 'Hydric Blade', 'Axenic Blade', 'Syndic Blade', 'Critic Blade', 'Frolic Blade', 'Fabric Blade', 'Zoic Blade', 'Emetic Blade', 'Antic Blade', 'Ludic Blade']
+Accounts_old = ['Mystic Blade', 'Xeric Blade', 'Epic Blade', 'Magic Blade', 'Garlic Blade', 'Cyclic Blade', 'Irenic Blade', 'Lyric Blade', 'Agonic Blade', 'Arabic Blade', 'Auric Blade', 'Azoic Blade', 'Azotic Blade', 'Bardic Blade', 'Baric Blade', 'Boric Blade', 'Bromic Blade', 'Cadmic Blade', 'Calcic Blade', 'Ceric Blade', 'Citric Blade', 'Cleric Blade', 'Cultic Blade', 'Cupric Blade', 'Cyanic Blade', 'Dyadic Blade', 'Emic Blade', 'Erotic Blade', 'Ethnic Blade', 'Etic Blade', 'Felsic Blade', 'Gnomic Blade', 'Holmic Blade', 'Humic Blade', 'Iodic Blade', 'Ionic Blade', 'Iridic Blade', 'Laic Blade', 'Lithic Blade', 'Logic Blade', 'Mafic Blade', 'Mantic Blade', 'Melic Blade', 'Mimic Blade', 'Music Blade', 'Niobic Blade', 'Nitric Blade', 'Odic Blade', 'Ontic Blade', 'Orphic Blade',
+                'Osmic Blade', 'Oxalic Blade', 'Oxidic Blade', 'Ozonic Blade', 'Panic Blade', 'Photic Blade', 'Poetic Blade', 'Rhodic Blade', 'Sodic Blade', 'Steric Blade', 'Telic Blade', 'Terbic Blade', 'Thic Blade', 'Thoric Blade', 'Toluic Blade', 'Typic Blade', 'Uranic Blade', 'Vitric Blade', 'Yttric Blade', 'Zincic Blade', 'Mastic Blade', 'Pyric Blade', 'Pelvic Blade', 'Daric Blade', 'Sepic Blade', 'Limbic Blade', 'Picnic Blade', 'Mesic Blade', 'Civic Blade', 'Ethic Blade', 'Medic Blade', 'Ovonic Blade', 'Azonic Blade', 'Chemic Blade', 'Echoic Blade', 'Fustic Blade', 'Toric Blade', 'Conic Blade', 'Hemic Blade', 'Salic Blade', 'Biotic Blade', 'Hydric Blade', 'Axenic Blade', 'Syndic Blade', 'Critic Blade', 'Frolic Blade', 'Fabric Blade', 'Zoic Blade', 'Emetic Blade', 'Antic Blade', 'Ludic Blade']
 HCIMAccounts = ['Heroic Blade']
 UIMAccounts = ['BladeBTW']
 GIMAccounts = ['Edenic Blade', 'Deific Blade',
@@ -233,8 +251,11 @@ def returnText(HiscoreKeyList):
     return msg
 
 
-def loopthroughAccounts(AccountList, Mode):
-    for account in AccountList:
+def loopthroughAccounts():
+
+    for account in accounts:
+
+        # TODO: What does this do
         HiScoreDictionary = True
         temp_list = True
         LeaguesList = True
@@ -242,54 +263,26 @@ def loopthroughAccounts(AccountList, Mode):
         Leaguesbody = True
         Leagueshtml_string = True
         LeaguesURL = True
-        if Mode == 'Normal':
-            im = Image.open("{}\\Images\\Normal.png".format(absolutePath))
-            URL = 'https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player={}'.format(
-                account)
-        if Mode == 'IM':
-            im = Image.open("{}\\Images\\IM.png".format(absolutePath))
-            URL = 'https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player={}'.format(
-                account)
-        if Mode == 'HCIM':
-            im = Image.open("{}\\Images\\HCIM.png".format(absolutePath))
-            URL = 'https://secure.runescape.com/m=hiscore_oldschool_hardcore_ironman/index_lite.ws?player={}'.format(
-                account)
-        if Mode == 'DMM':
-            im = Image.open("{}\\Images\\DMM.png".format(absolutePath))
-            URL = 'https://secure.runescape.com/m=hiscore_oldschool_deadman/index_lite.ws?player={}'.format(
-                account)
-        if Mode == 'Tournament':
-            im = Image.open("{}\\Images\\Tournament.png".format(absolutePath))
-            URL = 'https://secure.runescape.com/m=hiscore_oldschool_tournament/index_lite.ws?player={}'.format(
-                account)
-        if Mode == 'UIM':
-            im = Image.open("{}\\Images\\UIM.png".format(absolutePath))
-            URL = 'https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player={}'.format(
-                account)
-        if Mode == 'Leagues':
-            URL = 'https://secure.runescape.com/m=hiscore_oldschool_seasonal/index_lite.ws?player={}'.format(
-                account)
-            im = Image.open("{}\\Images\\Leagues.png".format(absolutePath))
-        html_string = requests.get(URL).content
+        # Comment end
+
+        accountType = accounts.get(account)
+        accountTypeParameter = accountTypeParameters.get(accountType)
+        apiUrl = f"https://secure.runescape.com/m={accountTypeParameter}/index_lite.ws?player={account}"
+        baseImagePath = Path(f"./Images/{accountType}.png").absolute()
+        baseImage = Image.open(baseImagePath)
+
+        # TODO: Error handling
+        html_string = requests.get(apiUrl).content
         body = lxml.html.document_fromstring(html_string).find('body')
         text = body.text_content()
+
+        # Old code starts here
 
         temp_list = text.splitlines()
         processPlayerHiscore(text)
 
-        LeaguesURL = 'https://secure.runescape.com/m=hiscore_oldschool_seasonal/index_lite.ws?player={}'.format(
-            account)
-        Leagueshtml_string = requests.get(LeaguesURL).content
-        Leaguesbody = lxml.html.document_fromstring(
-            Leagueshtml_string).find('body')
-        Leaguestext = Leaguesbody.text_content()
-        LeaguesList = Leaguestext.splitlines()
+        # TODO: Leagues - unsure what old code function was. See line 103 in base repo
 
-        if len(LeaguesList) > 0 and LeaguesList[0] != '':
-            temp_list[24] = LeaguesList[24]
-        HiScoreDictionary = dict(zip(HiScoreList, temp_list))
-        # print('Account = {}'.format(account))
-        # print('HiScoreDictionary = {}'.format(HiScoreDictionary))
         if len(HiScoreDictionary) > 0:
             Numeric = True
             for key in HiScoreDictionary.values():
@@ -316,7 +309,8 @@ def loopthroughAccounts(AccountList, Mode):
                     # print('combatlvl calced through combat_level(stats)')
                     combatlvl = combat_level(stats)
                     # print('combatlvl = {}'.format(combatlvl))
-                temp_list.append('{},{},{}'.format(combatlvl, combatlvl, combatlvl))
+                temp_list.append('{},{},{}'.format(
+                    combatlvl, combatlvl, combatlvl))
         HiScoreDictionary = dict(zip(HiScoreList, temp_list))
 
         font = ImageFont.truetype("{}\\Reckoner.ttf".format(
@@ -331,7 +325,8 @@ def loopthroughAccounts(AccountList, Mode):
             print(d.textsize(text, font=font))
             width, height = d.textsize(text, font=font)
 
-            print(f"Drew skill: {levelScore.name} at X={levelScore.Position.x} and Y={levelScore.Position.y}")
+            print(
+                f"Drew skill: {levelScore.name} at X={levelScore.Position.x} and Y={levelScore.Position.y}")
 
             d.text((x, y), text, font=font, fill=text_color)
 
@@ -342,13 +337,13 @@ def loopthroughAccounts(AccountList, Mode):
             print(d.textsize(text, font=font))
             width, height = d.textsize(text, font=font)
 
-            print(f"Drew boss: {bossScore.name} at X={bossScore.Position.x} and Y={bossScore.Position.y}")
+            print(
+                f"Drew boss: {bossScore.name} at X={bossScore.Position.x} and Y={bossScore.Position.y}")
 
             d.text((x, y), text, font=font, fill=text_color)
 
         print(f"{outputPath}/{account}_hiscore.png")
         im.save(f"{outputPath}/{account}_hiscore.png")
-
 
         # print("{}{}_hiscore.png".format(outputPath, account))
         # TODO: remove exit()
@@ -357,10 +352,4 @@ def loopthroughAccounts(AccountList, Mode):
 
 
 while True:
-    loopthroughAccounts(Accounts, 'Normal')
-    loopthroughAccounts(IMAccounts, 'IM')
-    loopthroughAccounts(HCIMAccounts, 'HCIM')
-    loopthroughAccounts(DeadmanModeAccounts, 'DMM')
-    loopthroughAccounts(Tournamentaccounts, 'Tournament')
-    loopthroughAccounts(UIMAccounts, 'UIM')
-    loopthroughAccounts(LeaguesAccounts, 'Leagues')
+    loopthroughAccounts()
