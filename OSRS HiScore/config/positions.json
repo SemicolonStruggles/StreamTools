@@ -1,0 +1,432 @@
+{
+  "gridOffset": {
+    "x": 685,
+    "y": 834
+  },
+  "gridAxis": {
+    "x": [
+      0,
+      63,
+      126,
+      189,
+      252,
+      315,
+      376,
+      439,
+      502,
+      565
+    ],
+    "y": [
+      0,
+      30,
+      60,
+      90,
+      120,
+      150,
+      180,
+      210
+    ]
+  },
+  "positions": {
+    "Combat": [
+      738,
+      781,
+      false
+    ],
+    "Overall": [
+      800,
+      781,
+      false
+    ],
+    "LMS - Rank": [
+      1120,
+      781,
+      false
+    ],
+    "League Points": [
+      1182,
+      781,
+      false
+    ],
+    "All Clue Scrolls": [
+      1244,
+      781,
+      false
+    ],
+    "Beginner Clues": [
+      0,
+      0,
+      true
+    ],
+    "Easy Clues": [
+      0,
+      1,
+      true
+    ],
+    "Medium Clues": [
+      0,
+      2,
+      true
+    ],
+    "Hard Clues": [
+      0,
+      3,
+      true
+    ],
+    "Elite Clues": [
+      0,
+      4,
+      true
+    ],
+    "Master Clues": [
+      0,
+      5,
+      true
+    ],
+    "Bounty Hunter - Hunter": [
+      0,
+      6,
+      true
+    ],
+    "Bounty Hunter - Rogue": [
+      0,
+      7,
+      true
+    ],
+    "Attack": [
+      1,
+      0,
+      true
+    ],
+    "Strength": [
+      1,
+      1,
+      true
+    ],
+    "Defence": [
+      1,
+      2,
+      true
+    ],
+    "Ranged": [
+      1,
+      3,
+      true
+    ],
+    "Prayer": [
+      1,
+      4,
+      true
+    ],
+    "Magic": [
+      1,
+      5,
+      true
+    ],
+    "Runecraft": [
+      1,
+      6,
+      true
+    ],
+    "Construction": [
+      1,
+      7,
+      true
+    ],
+    "Hitpoints": [
+      2,
+      0,
+      true
+    ],
+    "Agility": [
+      2,
+      1,
+      true
+    ],
+    "Herblore": [
+      2,
+      2,
+      true
+    ],
+    "Thieving": [
+      2,
+      3,
+      true
+    ],
+    "Crafting": [
+      2,
+      4,
+      true
+    ],
+    "Fletching": [
+      2,
+      5,
+      true
+    ],
+    "Slayer": [
+      2,
+      6,
+      true
+    ],
+    "Hunter": [
+      2,
+      7,
+      true
+    ],
+    "Mining": [
+      3,
+      0,
+      true
+    ],
+    "Smithing": [
+      3,
+      1,
+      true
+    ],
+    "Fishing": [
+      3,
+      2,
+      true
+    ],
+    "Cooking": [
+      3,
+      3,
+      true
+    ],
+    "Firemaking": [
+      3,
+      4,
+      true
+    ],
+    "Woodcutting": [
+      3,
+      5,
+      true
+    ],
+    "Farming": [
+      3,
+      6,
+      true
+    ],
+    "Abyssal Sire": [
+      4,
+      0,
+      true
+    ],
+    "Alchemical Hydra": [
+      4,
+      1,
+      true
+    ],
+    "Barrows Chests": [
+      4,
+      2,
+      true
+    ],
+    "Bryophyta": [
+      4,
+      3,
+      true
+    ],
+    "Callisto": [
+      4,
+      4,
+      true
+    ],
+    "Cerberus": [
+      4,
+      5,
+      true
+    ],
+    "Chambers of Xeric": [
+      4,
+      6,
+      true
+    ],
+    "Chambers of Xeric: Challenge Mode": [
+      4,
+      7,
+      true
+    ],
+    "Chaos Elemental": [
+      5,
+      0,
+      true
+    ],
+    "Chaos Fanatic": [
+      5,
+      1,
+      true
+    ],
+    "Commander Zilyana": [
+      5,
+      2,
+      true
+    ],
+    "Corporal Beast": [
+      5,
+      3,
+      true
+    ],
+    "Crazy Archaeologist": [
+      5,
+      4,
+      true
+    ],
+    "Deranged Archaeologist": [
+      5,
+      5,
+      true
+    ],
+    "Dagannoth Prime": [
+      5,
+      6,
+      true
+    ],
+    "Dagannoth Rex": [
+      5,
+      7,
+      true
+    ],
+    "Dagannoth Supreme": [
+      6,
+      0,
+      true
+    ],
+    "General Graardor": [
+      6,
+      1,
+      true
+    ],
+    "Giant Mole": [
+      6,
+      2,
+      true
+    ],
+    "Grotesque Guardians": [
+      6,
+      3,
+      true
+    ],
+    "Hespori": [
+      6,
+      4,
+      true
+    ],
+    "Kalphite Queen": [
+      6,
+      5,
+      true
+    ],
+    "King Black Dragon": [
+      6,
+      6,
+      true
+    ],
+    "Kraken": [
+      6,
+      7,
+      true
+    ],
+    "Kree'Arra": [
+      7,
+      0,
+      true
+    ],
+    "K'ril Tsutsaroth": [
+      7,
+      1,
+      true
+    ],
+    "Mimic": [
+      7,
+      2,
+      true
+    ],
+    "Nightmare": [
+      7,
+      3,
+      true
+    ],
+    "Obor": [
+      7,
+      4,
+      true
+    ],
+    "Sarachnis": [
+      7,
+      5,
+      true
+    ],
+    "Scorpia": [
+      7,
+      6,
+      true
+    ],
+    "Skotizo": [
+      7,
+      7,
+      true
+    ],
+    "The Gauntlet": [
+      8,
+      0,
+      true
+    ],
+    "The Corrupted Gauntlet": [
+      8,
+      1,
+      true
+    ],
+    "Theater of Blood": [
+      8,
+      2,
+      true
+    ],
+    "Thermonuclear Smoke Devil": [
+      8,
+      3,
+      true
+    ],
+    "TzKal-Zuk": [
+      8,
+      4,
+      true
+    ],
+    "TzTok-Jad": [
+      8,
+      5,
+      true
+    ],
+    "Venenatis": [
+      8,
+      6,
+      true
+    ],
+    "Vet'ion": [
+      8,
+      7,
+      true
+    ],
+    "Vorkath": [
+      9,
+      0,
+      true
+    ],
+    "Wintertodt": [
+      9,
+      1,
+      true
+    ],
+    "Zalcano": [
+      9,
+      2,
+      true
+    ],
+    "Zulrah": [
+      9,
+      3,
+      true
+    ]
+  }
+}
