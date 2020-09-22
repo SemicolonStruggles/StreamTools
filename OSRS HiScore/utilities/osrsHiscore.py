@@ -75,8 +75,9 @@ def loopthroughAccounts():
         accountType = accounts.get(account)
         accountTypeParameter = accountTypes.get(accountType)
         apiUrl = f"https://secure.runescape.com/m={accountTypeParameter}/index_lite.ws?player={account}"
-        baseImagePath = Path(f"./Images/{accountType}.png").absolute()
-        baseImage = Image.open(baseImagePath)
+        baseImagePath = appConfig.get("inputDir")
+        imagePath = Path(baseImagePath, f"{accountType}.png")
+        baseImage = Image.open(imagePath)
 
         # TODO: Error handling
         html_string = requests.get(apiUrl).content
